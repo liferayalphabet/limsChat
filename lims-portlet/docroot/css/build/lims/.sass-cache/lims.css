@@ -1,0 +1,1429 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2014 Marcel Mika, marcelmika.com
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+/********************************************************************************
+/* RESET
+/********************************************************************************/
+.liferay-ims * {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  background: none repeat scroll 0 0 transparent;
+  font-weight: normal;
+  text-decoration: none;
+  text-indent: 0;
+  text-align: left; }
+.liferay-ims div,
+.liferay-ims span,
+.liferay-ims p,
+.liferay-ims a,
+.liferay-ims img,
+.liferay-ims small,
+.liferay-ims strong,
+.liferay-ims b,
+.liferay-ims u,
+.liferay-ims i,
+.liferay-ims ul,
+.liferay-ims li,
+.liferay-ims fieldset,
+.liferay-ims label,
+.liferay-ims textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  border-spacing: 0;
+  float: none; }
+.liferay-ims ul {
+  list-style: none;
+  float: none; }
+.liferay-ims input,
+.liferay-ims input[type="text"] {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
+
+/********************************************************************************
+/ LISTS
+/********************************************************************************/
+/* Divider between list elements */
+.liferay-ims li.divider {
+  border-bottom: 1px solid #ddd; }
+
+/********************************************************************************
+/ PRELOADER
+/********************************************************************************/
+.liferay-ims .preloader {
+  position: absolute;
+  margin: 60px auto 0;
+  text-align: center;
+  background: url("../../../images/preloader-light.gif") center center no-repeat;
+  width: 100%;
+  height: 40px; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    .liferay-ims .preloader {
+      /* On retina, use image that's scaled by 2 */
+      background-image: url("../../../images/preloader-light@2x.gif");
+      background-size: auto 25px; } }
+
+/********************************************************************************
+/ BUTTON
+/********************************************************************************/
+.liferay-ims .button {
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset, 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset, 0 -1px 0 rgba(0, 0, 0, 0.15) inset;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset, 0 -1px 0 rgba(0, 0, 0, 0.15) inset; }
+  .liferay-ims .button:hover, .liferay-ims .button:focus {
+    text-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background-color: #eee; }
+.liferay-ims .button-primary {
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc; }
+.liferay-ims .button-default {
+  color: #333333;
+  background-color: white;
+  border-color: #cccccc; }
+.liferay-ims .button-primary.active,
+.liferay-ims .button-primary.active:hover {
+  color: white;
+  background-color: #74B3EB;
+  border-color: #629CCE; }
+.liferay-ims .button-primary:hover {
+  color: #333333;
+  background-color: rgba(178, 217, 241, 0.62);
+  border-color: rgba(178, 217, 241, 0.62); }
+.liferay-ims .button-default:hover,
+.liferay-ims .button-default.active {
+  color: #333333;
+  background-color: #ebebeb;
+  border-color: #adadad; }
+.liferay-ims .button-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 22px;
+  padding-bottom: 5px; }
+  .liferay-ims .button-group.disabled {
+    opacity: 0.5; }
+  .liferay-ims .button-group.disabled .button-primary:hover {
+    color: #333333;
+    background-color: #ffffff;
+    border-color: #cccccc; }
+  .liferay-ims .button-group.disabled .button-primary.active:hover {
+    color: white;
+    background-color: #74B3EB;
+    border-color: #629CCE; }
+  .liferay-ims .button-group .button {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; }
+  .liferay-ims .button-group > .button {
+    position: relative;
+    float: left;
+    margin-left: -1px; }
+  .liferay-ims .button-group .button:first-of-type {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    -moz-border-radius-topright: 0;
+    -webkit-border-top-right-radius: 0;
+    border-top-right-radius: 0;
+    -moz-border-radius-bottomright: 0;
+    -webkit-border-bottom-right-radius: 0;
+    border-bottom-right-radius: 0; }
+  .liferay-ims .button-group .button:last-of-type {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    -moz-border-radius-topleft: 0;
+    -webkit-border-top-left-radius: 0;
+    border-top-left-radius: 0;
+    -moz-border-radius-bottomleft: 0;
+    -webkit-border-bottom-left-radius: 0;
+    border-bottom-left-radius: 0; }
+
+/************************************************************************************
+/  TOKEN INPUT
+/************************************************************************************/
+.liferay-ims .token-input li {
+  padding-bottom: 0; }
+.liferay-ims .token-input .token-input-plugin,
+.liferay-ims .token-input .token-input-plugin-content,
+.liferay-ims .token-input .token-input-plugin-item,
+.liferay-ims .token-input .token-input-plugin-list {
+  display: inline-block;
+  padding: 0;
+  vertical-align: bottom;
+  zoom: 1; }
+.liferay-ims .token-input .token-input-plugin {
+  width: 360px; }
+.liferay-ims .token-input .token-input-plugin-content,
+.liferay-ims .token-input .token-input-plugin-list {
+  width: 100%; }
+.liferay-ims .token-input .token-input-plugin-input {
+  position: relative;
+  top: 4px;
+  border: 0;
+  background: none;
+  outline: 0;
+  padding: 0;
+  width: 5ex;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin-bottom: 7px;
+  max-height: 21px; }
+.liferay-ims .token-input .token-input-plugin-input:disabled {
+  background: none; }
+.liferay-ims .token-input .token-input-plugin-input:focus {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
+.liferay-ims .token-input .token-input-plugin-item {
+  margin: 1px 2px;
+  padding-bottom: 0; }
+.liferay-ims .token-input .token-input-plugin-list {
+  cursor: text;
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 1px 0; }
+.liferay-ims .token-input .token-input-plugin-token {
+  cursor: pointer; }
+.liferay-ims .token-input .token-input-plugin-hidden,
+.liferay-ims .token-input .token-input-plugin-host {
+  display: none; }
+.liferay-ims .token-input .token-input-plugin {
+  outline: 0; }
+.liferay-ims .token-input .token-input-plugin-list {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+.liferay-ims .token-input .token-input-plugin-content {
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #000;
+  padding: 0; }
+.liferay-ims .token-input .token-input-plugin-fauxinput {
+  border-bottom-color: #dadada;
+  border-top-color: #717171;
+  -webkit-box-shadow: inset 0 1px 2px -1px #717171;
+  -moz-box-shadow: inset 0 1px 2px -1px #717171;
+  box-shadow: inset 0 1px 2px -1px #717171; }
+.liferay-ims .token-input .token-input-plugin-token {
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  background-color: #74B3EB;
+  border: none;
+  color: white;
+  padding: 1px 11px 2px;
+  position: relative;
+  font-weight: 500; }
+.liferay-ims .token-input .token-input-plugin-hasremove {
+  padding-right: 21px !important; }
+.liferay-ims .token-input .token-input-plugin-hover {
+  background-color: #64a3eb;
+  border-color: #4991ce; }
+.liferay-ims .token-input .token-input-plugin-focus {
+  background-color: #4595eb;
+  border-color: #337ece;
+  color: #fff;
+  outline: 0; }
+.liferay-ims .token-input .token-input-plugin-remove {
+  color: #fff;
+  line-height: 1;
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none; }
+.liferay-ims .token-input .token-input-plugin-windows .token-input-plugin-remove {
+  margin-top: 2px; }
+.liferay-ims .token-input .token-input-plugin-remove:hover {
+  color: #333; }
+.liferay-ims .token-input .token-input-plugin-focus .token-input-plugin-remove {
+  color: #fff; }
+.liferay-ims .token-input.disabled .token-input-plugin-token {
+  opacity: 0.5; }
+.liferay-ims .token-input.disabled .token-input-plugin-hover {
+  background-color: #74B3EB;
+  border: 1px solid #629CCE; }
+.liferay-ims .token-input.disabled .token-input-plugin-remove:hover {
+  color: #ffffff; }
+
+/********************************************************************************
+/ STATUS INDICATOR
+/********************************************************************************/
+.liferay-ims .status-indicator {
+  width: 10px;
+  height: 10px;
+  opacity: 0.9; }
+  .liferay-ims .status-indicator.online {
+    background: url(../../../images/status-online.png) no-repeat center center; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .status-indicator.online {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/status-online@2x.png");
+        background-size: 10px 10px; } }
+  .liferay-ims .status-indicator.busy {
+    background: url(../../../images/status-busy.png) no-repeat center center; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .status-indicator.busy {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/status-busy@2x.png");
+        background-size: 10px 10px; } }
+  .liferay-ims .status-indicator.unavailable {
+    background: url(../../../images/status-unavailable.png) no-repeat center center; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .status-indicator.unavailable {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/status-unavailable@2x.png");
+        background-size: 10px 10px; } }
+  .liferay-ims .status-indicator.off {
+    background: url(../../../images/status-off.png) no-repeat center center; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .status-indicator.off {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/status-off@2x.png");
+        background-size: 10px 10px; } }
+
+/********************************************************************************
+/ SWITCH
+/********************************************************************************/
+.liferay-ims {
+  /* accessibility styles */
+  /* reset accessibility style on hover */ }
+  .liferay-ims .switch {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    font-size: 20px;
+    margin-right: 10px; }
+  .liferay-ims .switch input {
+    opacity: 0;
+    position: absolute; }
+  .liferay-ims .switch input + span {
+    position: relative;
+    display: inline-block;
+    width: 1.65em;
+    height: 1em;
+    background: white;
+    box-shadow: inset 0 0 0 0.0625em #e9e9e9;
+    border-radius: 0.5em;
+    vertical-align: -0.15em;
+    transition: all 0.4s cubic-bezier(0.17, 0.67, 0.43, 0.98); }
+  .liferay-ims .switch:active input + span,
+  .liferay-ims .switch input + span:active {
+    box-shadow: inset 0 0 0 0.73em #e9e9e9; }
+  .liferay-ims .switch input + span:after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 0.875em;
+    height: 0.875em;
+    border-radius: 0.4375em;
+    top: 0.0625em;
+    left: 0.0625em;
+    background: white;
+    box-shadow: inset 0 0 0 0.03em rgba(0, 0, 0, 0.1), 0 0 0.05em rgba(0, 0, 0, 0.05), 0 0.1em 0.2em rgba(0, 0, 0, 0.2);
+    transition: all 0.25s ease-out; }
+  .liferay-ims .switch:active input + span:after,
+  .liferay-ims .switch input + span:active:after {
+    width: 1.15em; }
+  .liferay-ims .switch input:checked + span {
+    box-shadow: inset 0 0 0 0.73em #4cd964; }
+  .liferay-ims .switch input:disabled + span {
+    box-shadow: inset 0 0 0 0.73em rgba(0, 0, 0, 0.08); }
+  .liferay-ims .switch input:checked + span:after {
+    left: 0.7125em; }
+  .liferay-ims .switch:active input:checked + span:after,
+  .liferay-ims .switch input:checked + span:active:after {
+    left: 0.4375em; }
+  .liferay-ims .switch input:focus + span:after {
+    box-shadow: inset 0 0 0 0.03em rgba(0, 0, 0, 0.15), 0 0 0.05em rgba(0, 0, 0, 0.08), 0 0.1em 0.2em rgba(0, 0, 0, 0.3);
+    background: #fff; }
+  .liferay-ims .switch input:focus + span {
+    box-shadow: inset 0 0 0 0.0625em #dadada; }
+  .liferay-ims .switch input:focus:checked + span {
+    box-shadow: inset 0 0 0 0.73em #33be4b; }
+  .liferay-ims .switch:hover input:focus + span:after {
+    box-shadow: inset 0 0 0 0.03em rgba(0, 0, 0, 0.1), 0 0 0.05em rgba(0, 0, 0, 0.05), 0 0.1em 0.2em rgba(0, 0, 0, 0.2);
+    background: #fff; }
+  .liferay-ims .switch:hover input:focus + span {
+    box-shadow: inset 0 0 0 0.0625em #e9e9e9; }
+  .liferay-ims .switch:hover input:focus:checked + span {
+    box-shadow: inset 0 0 0 0.73em #4cd964; }
+
+/************************************************************************************
+/  ERROR NOTIFICATION
+/************************************************************************************/
+.liferay-ims .error-notification {
+  top: 40%;
+  padding: 10px;
+  width: 90%;
+  position: absolute; }
+  .liferay-ims .error-notification .warning-icon {
+    background: transparent url(../../../images/icon-warning-red.png) no-repeat center center;
+    width: 14px;
+    height: 16px;
+    margin: 0 7px 0 0;
+    float: left; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .error-notification .warning-icon {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/icon-warning-red@2x.png");
+        background-size: 14px 16px; } }
+  .liferay-ims .error-notification .error-message {
+    color: #ce1b1b;
+    max-width: 170px;
+    min-height: 16px;
+    float: left;
+    line-height: 13px;
+    font-size: 12px;
+    text-align: justify; }
+  .liferay-ims .error-notification .resend-button {
+    background: transparent url(../../../images/icon-resend.png) no-repeat center center;
+    width: 21px;
+    height: 21px;
+    float: right;
+    border: none;
+    filter: none;
+    padding: 0;
+    margin: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .error-notification .resend-button {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/icon-resend@2x.png");
+        background-size: auto 21px; } }
+  .liferay-ims .error-notification .resend-button.activated {
+    position: relative;
+    text-align: center;
+    background: transparent url(../../../images/preloader-button.gif) center center no-repeat;
+    width: 21px;
+    height: 21px; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .error-notification .resend-button.activated {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/preloader-button@2x.gif");
+        background-size: auto 21px; } }
+
+/************************************************************************************
+/  INFO NOTIFICATION
+/************************************************************************************/
+.liferay-ims .info-notification {
+  top: 40%;
+  padding: 10px;
+  width: 90%;
+  position: absolute; }
+  .liferay-ims .info-notification .info-icon {
+    background: transparent url(../../../images/icon-info-blue.png) no-repeat center center;
+    width: 18px;
+    height: 18px;
+    margin: 0 10px 0 5px;
+    float: left; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .info-notification .info-icon {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/icon-info-blue@2x.png");
+        background-size: auto 18px; } }
+  .liferay-ims .info-notification .info-message {
+    color: #7e7e7e;
+    max-width: 190px;
+    min-height: 18px;
+    float: left;
+    line-height: 13px;
+    font-size: 12px;
+    text-align: justify; }
+
+/********************************************************************************
+/ GLOBALS
+/********************************************************************************/
+.liferay-ims {
+  -webkit-font-smoothing: antialiased; }
+  .liferay-ims li {
+    line-height: 15px;
+    padding: 0;
+    margin: 0;
+    background: #ffffff;
+    text-align: left; }
+  .liferay-ims button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    opacity: 1 !important; }
+  .liferay-ims label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer; }
+  .liferay-ims button:hover {
+    opacity: 0.6 !important; }
+  .liferay-ims a.link {
+    color: #009AE5;
+    font-weight: 200;
+    text-decoration: none; }
+    .liferay-ims a.link:hover, .liferay-ims a.link:focus {
+      text-decoration: underline; }
+
+/********************************************************************************
+/ HELPERS
+/********************************************************************************/
+.liferay-ims .hide {
+  display: none !important; }
+.liferay-ims .covered {
+  visibility: hidden; }
+.liferay-ims .clear {
+  clear: both; }
+.liferay-ims .pull-left {
+  float: left; }
+.liferay-ims .pull-right {
+  float: right; }
+.liferay-ims .overflow-y-scroll {
+  overflow-y: scroll; }
+
+/********************************************************************************
+/ PANEL - TRIGGER
+/********************************************************************************/
+.liferay-ims .lims-bar div ul li .panel-trigger {
+  cursor: pointer;
+  float: left;
+  border-left: 1px solid #dddad8;
+  color: #4c4c4c;
+  text-decoration: none;
+  padding: 0 6px; }
+  .liferay-ims .lims-bar div ul li .panel-trigger:hover {
+    background: #fff; }
+  .liferay-ims .lims-bar div ul li .panel-trigger span.trigger-name {
+    max-width: 150px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 15px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .liferay-ims .lims-bar div ul li .panel-trigger .unread {
+    background: #bd3131;
+    color: #fff;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 3px;
+    top: 4px;
+    text-align: center;
+    line-height: 14px;
+    font-weight: bold;
+    opacity: 0.8;
+    overflow: hidden;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px; }
+    .liferay-ims .lims-bar div ul li .panel-trigger .unread.dimmed {
+      background-color: #b3b3b3; }
+
+.liferay-ims .lims-bar div ul li.selected .panel-trigger {
+  background: #fff;
+  border-top: none;
+  border-bottom: none;
+  line-height: 24px;
+  height: 24px;
+  position: relative;
+  z-index: 30;
+  -webkit-box-shadow: #bcbcbc 1px 1px 1px;
+  -moz-box-shadow: #bcbcbc 1px 1px 1px;
+  box-shadow: #bcbcbc 1px 1px 1px; }
+
+/********************************************************************************
+/ PANEL - WINDOW
+/********************************************************************************/
+.liferay-ims .panel-window {
+  background: #fff;
+  border: 1px solid #dddad8;
+  border-bottom: none;
+  border-right: none;
+  font-size: 12px;
+  min-width: 250px;
+  position: relative; }
+
+.liferay-ims .ie-support .panel-window {
+  border-right: 2px solid #dddad8;
+  border-bottom: 1px solid #dddad8; }
+
+/********************************************************************************
+/ PANEL - BUTTONS
+/********************************************************************************/
+.liferay-ims .panel-button {
+  cursor: pointer;
+  width: 20px;
+  height: 14px;
+  float: right;
+  margin: 5px 7px 0 0;
+  opacity: 0.8;
+  outline: none;
+  filter: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  padding: 0; }
+  .liferay-ims .panel-button:hover, .liferay-ims .panel-button:focus {
+    border: none;
+    filter: none;
+    padding: 0;
+    margin: 5px 7px 0 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 20px;
+    height: 14px; }
+  .liferay-ims .panel-button.minimize {
+    background: url(../../../images/minimize-button.png) left bottom no-repeat; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .panel-button.minimize {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/minimize-button@2x.png");
+        background-size: auto 13px; } }
+  .liferay-ims .panel-button.close {
+    background: url(../../../images/close-button.png) center center no-repeat; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .panel-button.close {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/close-button@2x.png");
+        background-size: auto 18px; } }
+  .liferay-ims .panel-button.search {
+    background: url(../../../images/search-button.png) center center no-repeat; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .panel-button.search {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/search-button@2x.png");
+        background-size: auto 13px; } }
+  .liferay-ims .panel-button.list {
+    background: url(../../../images/list-button.png) center center no-repeat; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .panel-button.list {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/list-button@2x.png");
+        background-size: auto 11px; } }
+
+/********************************************************************************
+/ PANEL - TITLE
+/********************************************************************************/
+.liferay-ims .panel-title {
+  background: #ffffff;
+  color: #222;
+  font-weight: normal;
+  height: 25px;
+  line-height: 24px;
+  text-indent: 7px;
+  text-align: left;
+  font-size: 15px;
+  border-bottom: 1px solid #ccc; }
+  .liferay-ims .panel-title .panel-title-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 190px;
+    text-indent: 5px;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+.liferay-ims .panel-subtitle {
+  padding: 5px;
+  background: #f8f8f8;
+  color: #222;
+  font-weight: bold;
+  height: 16px; }
+
+/********************************************************************************
+/ PANEL - ERROR
+/********************************************************************************/
+.liferay-ims .panel-error {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+  top: 25px;
+  z-index: 2;
+  width: 100%; }
+  .liferay-ims .panel-error .error-message {
+    margin: 15px 20px;
+    font-weight: 500;
+    line-height: 13px;
+    color: #ffffff; }
+  .liferay-ims .panel-error .warning-icon {
+    background: transparent url(../../../images/icon-warning-white.png) no-repeat center center;
+    width: 21px;
+    height: 21px;
+    margin: 18px 7px;
+    float: left; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .panel-error .warning-icon {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/icon-warning-white@2x.png");
+        background-size: auto 21px; } }
+
+.liferay-ims .ie-support .panel-error {
+  background: #000; }
+
+/********************************************************************************
+/ PANEL - SEARCH INPUT
+/********************************************************************************/
+.liferay-ims .panel-search {
+  position: absolute;
+  top: 26px;
+  z-index: 2;
+  background: #ffffff;
+  width: 100%; }
+  .liferay-ims .panel-search .search-input-field-label {
+    padding: 0;
+    border: none;
+    height: 26px;
+    background: none;
+    margin: 5px 0 5px 7px; }
+  .liferay-ims .panel-search .search-input-field {
+    border: 1px solid #d4d4d4;
+    width: 180px;
+    min-height: 21px;
+    max-height: 26px;
+    padding: 2px 27px 2px 27px;
+    color: #1A1A1A;
+    font-size: 12px;
+    background-size: 13px;
+    background: #f1f1f1 url(../../../images/search-button.png) 7px center no-repeat;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .panel-search .search-input-field {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/search-button@2x.png");
+        background-size: auto 13px; } }
+  .liferay-ims .panel-search .search-input-field:hover,
+  .liferay-ims .panel-search .search-input-field:focus {
+    background: white url(../../../images/search-button.png) 7px center no-repeat;
+    border: 1px solid #d4d4d4;
+    outline: none;
+    background-size: 13px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .panel-search .search-input-field:hover,
+      .liferay-ims .panel-search .search-input-field:focus {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/search-button@2x.png");
+        background-size: auto 13px; } }
+  .liferay-ims .panel-search .search-content {
+    height: 252px;
+    overflow-y: auto;
+    overflow-x: hidden; }
+  .liferay-ims .panel-search .preloader {
+    width: 20px;
+    height: 20px;
+    background-image: url(../../../images/preloader-tiny.gif);
+    background-size: 17px;
+    top: 7px;
+    right: 12px;
+    margin: 0; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .panel-search .preloader {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/preloader-tiny@2x.gif");
+        background-size: auto 17px; } }
+  .liferay-ims .panel-search .error-notification,
+  .liferay-ims .panel-search .info-notification {
+    /* Move the notification views a bit up since there is a search input that takes the place */
+    top: 20%; }
+
+/********************************************************************************
+/ CONTACTS PANEL
+/********************************************************************************/
+.liferay-ims .buddy-list .panel-trigger .trigger-name {
+  background: url(../../../images/icon-people.png) no-repeat center center;
+  width: 40px;
+  height: 24px; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    .liferay-ims .buddy-list .panel-trigger .trigger-name {
+      /* On retina, use image that's scaled by 2 */
+      background-image: url("../../../images/icon-people@2x.png");
+      background-size: auto 16px; } }
+.liferay-ims .buddy-list.selected .panel-trigger .trigger-name {
+  background: url(../../../images/icon-people-selected.png) no-repeat center center;
+  width: 40px;
+  height: 24px; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    .liferay-ims .buddy-list.selected .panel-trigger .trigger-name {
+      /* On retina, use image that's scaled by 2 */
+      background-image: url("../../../images/icon-people-selected@2x.png");
+      background-size: auto 18px; } }
+.liferay-ims .buddy-list .group-list .group-item {
+  clear: both;
+  list-style-type: none;
+  line-height: 27px; }
+.liferay-ims .buddy-list .group-buddy-list {
+  overflow: hidden; }
+.liferay-ims .buddy-list .group-buddy-item {
+  padding: 3px 7px;
+  cursor: pointer;
+  height: 35px;
+  clear: both;
+  line-height: 15px;
+  min-height: 35px; }
+.liferay-ims .buddy-list .group-buddy-item:last-of-type {
+  padding-bottom: 7px; }
+.liferay-ims .buddy-list .group-buddy-item .group-buddy-item-name {
+  margin-top: 6px;
+  max-width: 145px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 23px; }
+.liferay-ims .buddy-list .group-buddy-item-presence {
+  float: right;
+  margin-right: 4px;
+  margin-top: -16px; }
+.liferay-ims .buddy-list .group-buddy-item-portrait {
+  height: 36px;
+  width: 36px;
+  margin: 2px 6px 2px 0;
+  float: left; }
+.liferay-ims .buddy-list .group-buddy-item-portrait .portrait {
+  display: block;
+  height: 32px;
+  width: 32px;
+  background: #fff;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+  border-radius: 16px; }
+.liferay-ims .buddy-list .group-buddy-item-divider {
+  clear: both; }
+.liferay-ims .buddy-list .group-buddy-item:hover {
+  background: #f8f8f8; }
+.liferay-ims .buddy-list .group-list .group-item .group-name {
+  height: 25px;
+  background: #f8f8f8;
+  margin: -6px 0 0 0;
+  padding-left: 5px;
+  padding-top: 6px;
+  text-transform: uppercase;
+  float: none;
+  -webkit-box-shadow: inset 0 0 0 0 #f8f8f8, inset 0 -2px 2px -2px rgba(105, 104, 104, 0.25);
+  -moz-box-shadow: inset 0 0 0 0 #f8f8f8, inset 0 -2px 2px -2px rgba(105, 104, 104, 0.25);
+  box-shadow: inset 0 0 0 0 #f8f8f8, inset 0 -2px 2px -2px rgba(105, 104, 104, 0.25);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 250px; }
+.liferay-ims .buddy-list .panel-content {
+  list-style-type: none;
+  margin: 0;
+  height: 284px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2px 0; }
+
+/********************************************************************************
+/ CONVERSATION
+/********************************************************************************/
+.liferay-ims .conversation .panel-content {
+  height: 250px;
+  overflow-y: auto;
+  background: #fff;
+  margin-top: 0; }
+.liferay-ims .conversation .panel-content li {
+  line-height: 15px; }
+.liferay-ims .conversation .ie .panel-content {
+  position: relative; }
+.liferay-ims .conversation .conversation-item {
+  padding: 5px 7px;
+  min-height: 34px; }
+.liferay-ims .conversation .conversation-item-portrait img.portrait {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  left: 6px;
+  top: 6px;
+  background: #fff;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+  border-radius: 16px; }
+.liferay-ims .conversation .conversation-item-message {
+  margin-left: 32px;
+  max-width: 220px; }
+.liferay-ims .conversation .conversation-item-name {
+  float: left;
+  font-size: 11px;
+  display: block;
+  padding: 3px 5px 3px;
+  color: #7e7e7e;
+  max-width: 120px;
+  line-height: 10px; }
+.liferay-ims .conversation .conversation-item-date {
+  float: right;
+  font-size: 9px;
+  font-style: normal;
+  color: #7e7e7e;
+  max-width: 75px;
+  line-height: 10px;
+  padding-top: 3px; }
+.liferay-ims .conversation .conversation-item-text {
+  display: block;
+  text-align: left;
+  line-height: 14px;
+  padding: 2px 8px;
+  color: #4c4c4c;
+  font-weight: 400;
+  clear: left;
+  word-wrap: break-word;
+  opacity: 0.6; }
+.liferay-ims .conversation .panel-input {
+  opacity: 0;
+  /* panel input is hidden until the message feed is loaded */
+  position: relative;
+  height: 34px; }
+.liferay-ims .conversation .panel-input textarea {
+  width: 249px;
+  height: 22px;
+  padding: 5px 10px 5px;
+  background: #f8f8f8;
+  border: 1px solid #dedede;
+  border-left: none;
+  border-right: none;
+  display: block;
+  overflow: hidden;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+  outline: none;
+  font-size: 12px;
+  line-height: 14px;
+  color: #545454;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px; }
+.liferay-ims .conversation .panel-input textarea:focus {
+  background: #fff;
+  border-bottom-color: #fff; }
+.liferay-ims .conversation span.highlight {
+  background: #a5d6ef;
+  font-weight: normal; }
+.liferay-ims .conversation .chat-height-monitor {
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  white-space: -o-pre-wrap;
+  white-space: -moz-pre-wrap;
+  word-wrap: break-word;
+  left: -10000em;
+  top: -10000em;
+  padding: 5px 10px 5px;
+  font-size: 12px;
+  line-height: 14px;
+  position: absolute; }
+.liferay-ims .conversation .conversation-item-error {
+  padding: 5px 0 5px; }
+  .liferay-ims .conversation .conversation-item-error .warning-icon {
+    background: transparent url(../../../images/icon-warning-red.png) no-repeat center center;
+    width: 14px;
+    height: 16px;
+    margin: 7px 7px 0 0;
+    float: left; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .conversation .conversation-item-error .warning-icon {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/icon-warning-red@2x.png");
+        background-size: auto 16px; } }
+  .liferay-ims .conversation .conversation-item-error .error-message {
+    color: #ce1b1b;
+    max-width: 160px;
+    float: left;
+    line-height: 13px;
+    font-size: 11px;
+    text-align: justify; }
+  .liferay-ims .conversation .conversation-item-error .resend-button {
+    background: transparent url(../../../images/icon-resend.png) no-repeat center center;
+    width: 21px;
+    height: 21px;
+    float: right;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0 15px 0 0;
+    border: none; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .conversation .conversation-item-error .resend-button {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/icon-resend@2x.png");
+        background-size: auto 21px; } }
+    .liferay-ims .conversation .conversation-item-error .resend-button:hover, .liferay-ims .conversation .conversation-item-error .resend-button:focus {
+      border: none;
+      filter: none;
+      padding: 0 15px 0 0;
+      margin: 0;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      width: 21px;
+      height: 21px; }
+  .liferay-ims .conversation .conversation-item-error .resend-button.preloader {
+    position: relative;
+    margin: 0;
+    background: transparent url(../../../images/preloader-button.gif) center center no-repeat;
+    background-size: 21px; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .conversation .conversation-item-error .resend-button.preloader {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/preloader-button@2x.gif");
+        background-size: 21px 21px; } }
+  .liferay-ims .conversation .conversation-item-error .delete-button {
+    background: transparent url(../../../images/icon-basket.png) no-repeat center center;
+    width: 16px;
+    height: 21px;
+    float: right;
+    padding: 0;
+    margin: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .conversation .conversation-item-error .delete-button {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/icon-basket@2x.png");
+        background-size: 16px 21px; } }
+    .liferay-ims .conversation .conversation-item-error .delete-button:hover, .liferay-ims .conversation .conversation-item-error .delete-button:focus {
+      border: none;
+      filter: none;
+      padding: 0;
+      margin: 0;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      width: 16px;
+      height: 21px; }
+
+ /************************************************************************************
+**   PRESENCE PANEL
+*************************************************************************************/
+.liferay-ims .status-panel .panel-trigger .trigger-name {
+  width: 20px;
+  height: 24px; }
+.liferay-ims .status-panel .panel-window {
+  min-width: 150px; }
+.liferay-ims .status-panel .status-indicator {
+  margin-left: 6px;
+  margin-top: 7px; }
+.liferay-ims .status-panel .panel-window .status li {
+  padding: 10px 5px 10px 30px;
+  cursor: pointer;
+  line-height: 15px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+.liferay-ims .status-panel .panel-window .status li:hover {
+  background-color: #f3f3f3; }
+.liferay-ims .status-panel .panel-window .status .online {
+  background: url(../../../images/status-online.png) no-repeat 10px center; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    .liferay-ims .status-panel .panel-window .status .online {
+      /* On retina, use image that's scaled by 2 */
+      background-image: url("../../../images/status-online@2x.png");
+      background-size: 10px 10px; } }
+.liferay-ims .status-panel .panel-window .status .busy {
+  background: url(../../../images/status-busy.png) no-repeat 10px center; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    .liferay-ims .status-panel .panel-window .status .busy {
+      /* On retina, use image that's scaled by 2 */
+      background-image: url("../../../images/status-busy@2x.png");
+      background-size: 10px 10px; } }
+.liferay-ims .status-panel .panel-window .status .unavailable {
+  background: url(../../../images/status-unavailable.png) no-repeat 10px center; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    .liferay-ims .status-panel .panel-window .status .unavailable {
+      /* On retina, use image that's scaled by 2 */
+      background-image: url("../../../images/status-unavailable@2x.png");
+      background-size: 10px 10px; } }
+.liferay-ims .status-panel .panel-window .status .off {
+  background: url(../../../images/status-off.png) no-repeat 10px center; }
+  @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+    .liferay-ims .status-panel .panel-window .status .off {
+      /* On retina, use image that's scaled by 2 */
+      background-image: url("../../../images/status-off@2x.png");
+      background-size: 10px 10px; } }
+
+/********************************************************************************
+/ SETTINGS PANEL
+/********************************************************************************/
+.liferay-ims .chat-settings {
+  /********************************************************************************
+  / SETTINGS PANEL - ADMIN AREA
+  /********************************************************************************/ }
+  .liferay-ims .chat-settings label {
+    font-size: 12px; }
+  .liferay-ims .chat-settings label.switch {
+    font-size: 20px; }
+  .liferay-ims .chat-settings .panel-trigger .trigger-name {
+    background: url(../../../images/icon-settings.png) no-repeat center center;
+    width: 40px;
+    height: 24px; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .chat-settings .panel-trigger .trigger-name {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/icon-settings@2x.png");
+        background-size: 16px 16px; } }
+  .liferay-ims .chat-settings.selected .panel-trigger .trigger-name {
+    background: url(../../../images/icon-settings-selected.png) no-repeat center center;
+    width: 40px;
+    height: 24px; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .chat-settings.selected .panel-trigger .trigger-name {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/icon-settings-selected@2x.png");
+        background-size: 16px 16px; } }
+  .liferay-ims .chat-settings .settings {
+    float: none; }
+  .liferay-ims .chat-settings .value {
+    float: left;
+    margin: -4px 8px 11px 9px;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 30px; }
+  .liferay-ims .chat-settings .settings li {
+    clear: both;
+    float: none;
+    padding: 10px;
+    line-height: 26px; }
+  .liferay-ims .chat-settings .settings .version {
+    position: absolute;
+    right: 28px;
+    z-index: 2;
+    font-size: 11px;
+    background: #fff;
+    padding: 1px 10px;
+    border: 1px solid #f0f0f0;
+    border-top: 0; }
+  .liferay-ims .chat-settings .settings.closed .version {
+    visibility: hidden; }
+  .liferay-ims .chat-settings .settings > input[type="text"] {
+    width: 300px; }
+  .liferay-ims .chat-settings .title-text {
+    text-transform: capitalize; }
+  .liferay-ims .chat-settings .buddy-list-ignore-deactivated-user {
+    margin-top: 10px; }
+  .liferay-ims .chat-settings .settings-title {
+    height: 25px;
+    background: #f8f8f8;
+    padding-left: 5px;
+    padding-top: 6px;
+    text-transform: uppercase;
+    float: none;
+    -webkit-box-shadow: inset 0 0 0 0 #f8f8f8, inset 0 -2px 2px -2px rgba(105, 104, 104, 0.25);
+    -moz-box-shadow: inset 0 0 0 0 #f8f8f8, inset 0 -2px 2px -2px rgba(105, 104, 104, 0.25);
+    box-shadow: inset 0 0 0 0 #f8f8f8, inset 0 -2px 2px -2px rgba(105, 104, 104, 0.25);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; }
+    .liferay-ims .chat-settings .settings-title .settings-title-text {
+      float: left;
+      max-width: 180px;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+  .liferay-ims .chat-settings .admin-area {
+    position: relative; }
+    .liferay-ims .chat-settings .admin-area .muc-sponsored {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      max-width: 250px; }
+      .liferay-ims .chat-settings .admin-area .muc-sponsored .muc-icon {
+        float: left;
+        background: url(../../../images/icon-muc.png) center center no-repeat;
+        width: 45px;
+        height: 45px; }
+        @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+          .liferay-ims .chat-settings .admin-area .muc-sponsored .muc-icon {
+            /* On retina, use image that's scaled by 2 */
+            background-image: url("../../../images/icon-muc@2x.png");
+            background-size: auto 45px; } }
+      .liferay-ims .chat-settings .admin-area .muc-sponsored .muc-text {
+        max-width: 160px;
+        padding-left: 53px;
+        padding-top: 9px;
+        line-height: 15px;
+        color: #4c9ac2; }
+    .liferay-ims .chat-settings .admin-area .settings {
+      width: 440px;
+      height: 300px;
+      overflow-x: hidden;
+      overflow-y: scroll; }
+    .liferay-ims .chat-settings .admin-area .settings.closed {
+      width: 250px;
+      height: 0; }
+    .liferay-ims .chat-settings .admin-area .help {
+      display: inline-block;
+      text-decoration: none;
+      background: url(../../../images/button-help.png) center center no-repeat;
+      width: 20px;
+      height: 20px;
+      float: right;
+      margin-right: 10px; }
+      @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+        .liferay-ims .chat-settings .admin-area .help {
+          /* On retina, use image that's scaled by 2 */
+          background-image: url("../../../images/button-help@2x.png");
+          background-size: auto 20px; } }
+    .liferay-ims .chat-settings .admin-area .help:hover {
+      opacity: 0.7; }
+    .liferay-ims .chat-settings .admin-area .open-button {
+      float: right;
+      margin-right: 10px;
+      text-decoration: underline;
+      text-transform: capitalize;
+      cursor: pointer; }
+    .liferay-ims .chat-settings .admin-area li {
+      padding: 0 10px; }
+    .liferay-ims .chat-settings .admin-area .buddy-list-ignore-default-user {
+      padding-top: 14px; }
+    .liferay-ims .chat-settings .admin-area .buddy-list-max-buddies {
+      margin-top: 17px; }
+    .liferay-ims .chat-settings .admin-area .settings-category-title {
+      margin-top: 10px; }
+    .liferay-ims .chat-settings .admin-area .buddy-list-group-excludes {
+      margin-bottom: 20px; }
+
+/************************************************************************************
+/  STATUS PANEL
+/************************************************************************************/
+.liferay-ims .status-panel .panel-window .status {
+  background: #ffffff;
+  display: block;
+  font-size: 12px; }
+  .liferay-ims .status-panel .panel-window .status.online {
+    background: url(../../../images/status-online.png) center center no-repeat;
+    background-size: 10px; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .status-panel .panel-window .status.online {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/status-online@2x.png");
+        background-size: 10px 10px; } }
+  .liferay-ims .status-panel .panel-window .status.busy {
+    background: url(../../../images/status-busy.png) center center no-repeat;
+    background-size: 10px; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .status-panel .panel-window .status.busy {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/status-busy@2x.png");
+        background-size: 10px 10px; } }
+  .liferay-ims .status-panel .panel-window .status.unavailable {
+    background: url(../../../images/status-unavailable.png) center center no-repeat;
+    background-size: 10px; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .status-panel .panel-window .status.unavailable {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/status-unavailable@2x.png");
+        background-size: 10px 10px; } }
+  .liferay-ims .status-panel .panel-window .status.off {
+    background: url(../../../images/status-off.png) center center no-repeat;
+    background-size: 10px; }
+    @media (min--moz-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 2.6 / 2), (-webkit-min-device-pixel-ratio: 1.3), (min-device-pixel-ratio: 1.3), (min-resolution: 1.3dppx) {
+      .liferay-ims .status-panel .panel-window .status.off {
+        /* On retina, use image that's scaled by 2 */
+        background-image: url("../../../images/status-off@2x.png");
+        background-size: 10px 10px; } }
+
+/********************************************************************************
+/ PORTLET
+/********************************************************************************/
+/* Move container down and on top */
+.liferay-ims {
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  opacity: 1; }
+  .liferay-ims textarea, .liferay-ims pre, .liferay-ims input {
+    font-weight: 400;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .liferay-ims .portlet-borderless-bar {
+    display: none !important; }
+  .liferay-ims .portlet {
+    border: none !important;
+    background: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important; }
+  .liferay-ims .preloaded-images {
+    position: absolute;
+    overflow: hidden;
+    left: -9999px;
+    top: -9999px;
+    height: 1px;
+    width: 1px; }
+  .liferay-ims .unsupported-browser {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    bottom: 0;
+    position: fixed;
+    right: 5em;
+    padding: 3px 10px;
+    z-index: 999; }
+  .liferay-ims .unsupported-browser a {
+    color: #444;
+    text-decoration: none; }
+  .liferay-ims .lims-sound {
+    position: absolute;
+    top: -10000px;
+    bottom: -10000px; }
+
+/********************************************************************************
+/ LIMS BAR (Main container)
+/********************************************************************************/
+.liferay-ims .lims-bar {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-left: none;
+  border-bottom: none;
+  bottom: 0;
+  height: 24px;
+  position: fixed;
+  right: 5em;
+  z-index: 999; }
+  .liferay-ims .lims-bar div ul,
+  .liferay-ims .lims-bar div ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: left; }
+  .liferay-ims .lims-bar .panel {
+    bottom: 24px;
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 20;
+    -webkit-box-shadow: #bcbcbc 1px 1px 1px;
+    -moz-box-shadow: #bcbcbc 1px 1px 1px;
+    box-shadow: #bcbcbc 1px 1px 1px; }
+  .liferay-ims .lims-bar .selected .panel {
+    display: block; }
+  .liferay-ims .lims-bar .lims-tabs > li {
+    float: right;
+    line-height: 24px; }
+  .liferay-ims .lims-bar div ul li.closed {
+    display: none; }
+
+/********************************************************************************
+/ NOTIFICATION - CONFLICT
+/********************************************************************************/
+.liferay-ims .conflict-notification {
+  max-width: 300px;
+  padding: 10px;
+  background: #f0d1d5;
+  border: 1px solid #ab8686;
+  border-bottom: none; }
+  .liferay-ims .conflict-notification strong {
+    font-weight: bold; }
+
+/* YUI CSS Detection Stamp */
+#yui3-css-stamp.lims {
+  display: none; }
+
+/* 
+Added by only Lims Chat portlet working with Tweleve Cap theme
+ */
+.liferay-ims .lims-bar .selected .panel {
+  display: block !important; }
+

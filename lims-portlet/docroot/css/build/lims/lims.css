@@ -1,0 +1,1729 @@
+/*
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2014 Marcel Mika, marcelmika.com
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+//
+// Import compass mixin library
+// http://compass-style.org
+//
+@import "compass";
+
+//
+// Imports high resolution images for high density displays such as retina
+//
+// @param $image name of the image
+// @param $width background size width of the image
+// @param $height background size height of the image
+//
+@mixin image-2x($image, $width, $height) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+  (-o-min-device-pixel-ratio: 2.6/2),
+  (-webkit-min-device-pixel-ratio: 1.3),
+  (min-device-pixel-ratio: 1.3),
+  (min-resolution: 1.3dppx) {
+    /* On retina, use image that's scaled by 2 */
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+
+// Prevents user from selecting the element
+@mixin no-select() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+//
+// Makes the font smooth. Needed for webkit
+// See: http://stackoverflow.com/questions/13144061/font-weights-differing-in-webkit-and-firefox
+@mixin font-smoothing() {
+  -webkit-font-smoothing: antialiased;
+}//////////////////////////////////////////////////////////////////////
+// WHITE THEME
+//////////////////////////////////////////////////////////////////////
+
+$font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+/********************************************************************************
+/* RESET
+/********************************************************************************/
+
+.liferay-ims {
+
+  * {
+    @include box-sizing(content-box);
+    background: none repeat scroll 0 0 transparent;
+    font-weight: normal;
+    text-decoration: none;
+    text-indent: 0;
+    text-align: left;
+  }
+
+  div,
+  span,
+  p,
+  a,
+  img,
+  small,
+  strong,
+  b,
+  u,
+  i,
+  ul,
+  li,
+  fieldset,
+  label,
+  textarea {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+    border-spacing: 0;
+    float: none;
+  }
+
+  ul {
+    list-style: none;
+    float: none;
+  }
+
+  input,
+  input[type="text"] {
+    @include box-shadow(none);
+  }
+}/********************************************************************************
+/ LISTS
+/********************************************************************************/
+
+/* Divider between list elements */
+.liferay-ims li.divider {
+  border-bottom: 1px solid #ddd;
+}
+
+/********************************************************************************
+/ PRELOADER
+/********************************************************************************/
+
+.liferay-ims .preloader {
+  position: absolute;
+  margin: 60px auto 0;
+  text-align: center;
+  background: url("../../../images/preloader-light.gif") center center no-repeat;
+  @include image-2x("../../../images/preloader-light@2x.gif", auto, 25px);
+  width: 100%;
+  height: 40px;
+
+}
+
+/********************************************************************************
+/ BUTTON
+/********************************************************************************/
+
+.liferay-ims {
+
+  .button {
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    // Rounded corners
+    @include border-radius(5px);
+    // Make the button unselectable
+    @include no-select();
+    @include box-shadow(0 1px 0 rgba(255,255,255,0.75) inset,0 -1px 0 rgba(0,0,0,0.15) inset);
+
+    &:hover,
+    &:focus {
+      text-shadow: none;
+      @include box-shadow(none);
+      background-color: #eee;
+    }
+  }
+
+  .button-primary {
+    color: #333333;
+    background-color: #ffffff;
+    border-color: #cccccc;
+  }
+
+  .button-default {
+    color: #333333;
+    background-color: white;
+    border-color: #cccccc;
+  }
+
+  .button-primary.active,
+  .button-primary.active:hover {
+    color: white;
+    background-color: #74B3EB;
+    border-color: #629CCE;
+  }
+
+  .button-primary:hover {
+    color: #333333;
+    background-color: rgba(178, 217, 241, 0.62);
+    border-color: rgba(178, 217, 241, 0.62);
+  }
+
+  .button-default:hover,
+  .button-default.active {
+    color: #333333;
+    background-color: #ebebeb;
+    border-color: #adadad;
+    
+  }
+
+  //////////////////////////////////////////////////////////////////
+  // Button group                                                 //
+  //////////////////////////////////////////////////////////////////
+
+  .button-group {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 22px;
+    padding-bottom: 5px;
+
+    &.disabled {
+      opacity: 0.5;
+    }
+
+    &.disabled .button-primary:hover {
+      color: #333333;
+      background-color: #ffffff;
+      border-color: #cccccc;
+    }
+
+    &.disabled .button-primary.active:hover {
+      color: white;
+      background-color: #74B3EB;
+      border-color: #629CCE;
+    }
+
+    .button {
+      // Rounded corners
+      @include border-radius(0);
+      @include box-shadow(none);
+    }
+
+    > .button {
+      position: relative;
+      float: left;
+      margin-left: -1px;
+    }
+
+    .button:first-of-type {
+      // Rounded corners
+      @include border-radius(5px);
+      @include border-top-right-radius(0);
+      @include border-bottom-right-radius(0);
+    }
+
+    .button:last-of-type {
+      // Rounded corners
+      @include border-radius(5px);
+      @include border-top-left-radius(0);
+      @include border-bottom-left-radius(0);
+    }
+  }
+}
+
+
+/************************************************************************************
+/  TOKEN INPUT
+/************************************************************************************/
+
+.liferay-ims .token-input {
+
+  li {
+    padding-bottom: 0;
+  }
+
+  .token-input-plugin,
+  .token-input-plugin-content,
+  .token-input-plugin-item,
+  .token-input-plugin-list {
+    display: inline-block;
+    padding: 0;
+    vertical-align: bottom;
+    zoom: 1;
+  }
+
+  .token-input-plugin {
+    width: 360px;
+  }
+
+  .token-input-plugin-content,
+  .token-input-plugin-list {
+    width: 100%;
+  }
+
+  .token-input-plugin-input {
+    position: relative;
+    top: 4px;
+    border: 0;
+    background: none;
+    outline: 0;
+    padding: 0;
+    width: 5ex;
+    @include appearance(none);
+    margin-bottom: 7px;
+    max-height: 21px;
+  }
+
+  .token-input-plugin-input:disabled {
+    background: none;
+  }
+
+  .token-input-plugin-input:focus {
+    @include appearance(none);
+    // Remove shadow
+    @include box-shadow(none);
+  }
+
+  .token-input-plugin-item {
+    margin: 1px 2px;
+    padding-bottom: 0;
+  }
+
+  .token-input-plugin-list {
+    cursor: text;
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 1px 0;
+  }
+
+  .token-input-plugin-token {
+    cursor: pointer;
+  }
+
+  .token-input-plugin-hidden,
+  .token-input-plugin-host {
+    display: none;
+  }
+
+  .token-input-plugin {
+    outline: 0;
+  }
+
+  .token-input-plugin-list {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  .token-input-plugin-content {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #000;
+    padding: 0;
+  }
+
+  .token-input-plugin-fauxinput {
+    border-bottom-color: #dadada;
+    border-top-color: #717171;
+    // Add shadow
+    @include box-shadow(inset 0 1px 2px -1px #717171);
+  }
+
+  .token-input-plugin-token {
+    // Rounded corners
+    @include border-radius(8px);
+    background-color: #74B3EB;
+    border: none;
+    color: white;
+    padding: 1px 11px 2px;
+    position: relative;
+    font-weight: 500;
+  }
+
+  .token-input-plugin-hasremove {
+    padding-right: 21px !important;
+  }
+
+  .token-input-plugin-hover {
+    background-color: #64a3eb;
+    border-color: #4991ce;
+  }
+
+  .token-input-plugin-focus {
+    background-color: #4595eb;
+    border-color: #337ece;
+    color: #fff;
+    outline: 0;
+  }
+
+  .token-input-plugin-remove {
+    color: #fff;
+    line-height: 1;
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .token-input-plugin-windows .token-input-plugin-remove {
+    margin-top: 2px;
+  }
+
+  .token-input-plugin-remove:hover {
+    color: #333;
+  }
+
+  .token-input-plugin-focus .token-input-plugin-remove {
+    color: #fff;
+  }
+
+  //  Disabled elements
+
+  &.disabled .token-input-plugin-token {
+    opacity: 0.5;
+  }
+
+  &.disabled .token-input-plugin-hover {
+    background-color: #74B3EB;
+    border: 1px solid #629CCE;
+  }
+
+  &.disabled .token-input-plugin-remove:hover {
+    color: #ffffff;
+  }
+
+}
+
+/********************************************************************************
+/ STATUS INDICATOR
+/********************************************************************************/
+
+.liferay-ims .status-indicator {
+  width: 10px;
+  height: 10px;
+  opacity: 0.9;
+
+  &.online {
+    background: url(../../../images/status-online.png) no-repeat center center;
+    @include image-2x('../../../images/status-online@2x.png', 10px, 10px);
+  }
+
+  &.busy {
+    background: url(../../../images/status-busy.png) no-repeat center center;
+    @include image-2x('../../../images/status-busy@2x.png', 10px, 10px);
+  }
+
+  &.unavailable {
+    background: url(../../../images/status-unavailable.png) no-repeat center center;
+    @include image-2x('../../../images/status-unavailable@2x.png', 10px, 10px);
+  }
+
+  &.off {
+    background: url(../../../images/status-off.png) no-repeat center center;
+    @include image-2x('../../../images/status-off@2x.png', 10px, 10px);
+  }
+
+}
+
+/********************************************************************************
+/ SWITCH
+/********************************************************************************/
+
+.liferay-ims {
+
+  .switch {
+    // Make the button unselectable
+    @include no-select();
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .switch input {
+    opacity: 0;
+    position: absolute;
+  }
+
+  .switch input + span {
+    position: relative;
+    display: inline-block;
+    width: 1.65em;
+    height: 1em;
+    background: white;
+    box-shadow: inset 0 0 0 0.0625em #e9e9e9;
+    border-radius: 0.5em;
+    vertical-align: -0.15em;
+    transition: all 0.40s cubic-bezier(.17, .67, .43, .98);
+  }
+
+  .switch:active input + span,
+  .switch input + span:active {
+    box-shadow: inset 0 0 0 0.73em #e9e9e9;
+  }
+
+  .switch input + span:after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 0.875em;
+    height: 0.875em;
+    border-radius: 0.4375em;
+    top: 0.0625em;
+    left: 0.0625em;
+    background: white;
+    box-shadow: inset 0 0 0 0.03em rgba(0, 0, 0, 0.1),
+    0 0 0.05em rgba(0, 0, 0, 0.05),
+    0 0.1em 0.2em rgba(0, 0, 0, 0.2);
+    transition: all 0.25s ease-out;
+  }
+
+  .switch:active input + span:after,
+  .switch input + span:active:after {
+    width: 1.15em;
+  }
+
+  .switch input:checked + span {
+    box-shadow: inset 0 0 0 0.73em #4cd964;
+  }
+
+  .switch input:disabled + span {
+    box-shadow: inset 0 0 0 0.73em rgba(0, 0, 0, 0.08);
+  }
+
+  .switch input:checked + span:after {
+    left: 0.7125em;
+  }
+
+  .switch:active input:checked + span:after,
+  .switch input:checked + span:active:after {
+    left: 0.4375em;
+  }
+
+  /* accessibility styles */
+  .switch input:focus + span:after {
+    box-shadow: inset 0 0 0 0.03em rgba(0, 0, 0, 0.15),
+    0 0 0.05em rgba(0, 0, 0, 0.08),
+    0 0.1em 0.2em rgba(0, 0, 0, 0.3);
+    background: #fff;
+  }
+
+  .switch input:focus + span {
+    box-shadow: inset 0 0 0 0.0625em #dadada;
+  }
+
+  .switch input:focus:checked + span {
+    box-shadow: inset 0 0 0 0.73em #33be4b;
+  }
+
+  /* reset accessibility style on hover */
+  .switch:hover input:focus + span:after {
+    box-shadow: inset 0 0 0 0.03em rgba(0, 0, 0, 0.1),
+    0 0 0.05em rgba(0, 0, 0, 0.05),
+    0 0.1em 0.2em rgba(0, 0, 0, 0.2);
+    background: #fff;
+  }
+
+  .switch:hover input:focus + span {
+    box-shadow: inset 0 0 0 0.0625em #e9e9e9;
+  }
+
+  .switch:hover input:focus:checked + span {
+    box-shadow: inset 0 0 0 0.73em #4cd964;
+  }
+
+}
+
+/************************************************************************************
+/  ERROR NOTIFICATION
+/************************************************************************************/
+
+.liferay-ims .error-notification {
+  top: 40%;
+  padding: 10px;
+  width: 90%;
+  position: absolute;
+
+  .warning-icon {
+    background: transparent url(../../../images/icon-warning-red.png) no-repeat center center;
+    @include image-2x('../../../images/icon-warning-red@2x.png', 14px, 16px);
+    width: 14px;
+    height: 16px;
+    margin: 0 7px 0 0;
+    float: left;
+  }
+
+  .error-message {
+    color: #ce1b1b;
+    max-width: 170px;
+    min-height: 16px;
+    float: left;
+    line-height: 13px;
+    font-size: 12px;
+    text-align: justify;
+  }
+
+  .resend-button {
+    background: transparent url(../../../images/icon-resend.png) no-repeat center center;
+    @include image-2x('../../../images/icon-resend@2x.png', auto, 21px);
+    width: 21px;
+    height: 21px;
+    float: right;
+    border: none;
+    filter: none;
+    padding: 0;
+    margin: 0;
+    @include box-shadow(none);
+  }
+
+  .resend-button.activated {
+    position: relative;
+    text-align: center;
+    background: transparent url(../../../images/preloader-button.gif) center center no-repeat;
+    @include image-2x('../../../images/preloader-button@2x.gif', auto, 21px);
+    width: 21px;
+    height: 21px;
+  }
+
+}
+
+/************************************************************************************
+/  INFO NOTIFICATION
+/************************************************************************************/
+
+.liferay-ims .info-notification {
+  top: 40%;
+  padding: 10px;
+  width: 90%;
+  position: absolute;
+
+  .info-icon {
+    background: transparent url(../../../images/icon-info-blue.png) no-repeat center center;
+    @include image-2x('../../../images/icon-info-blue@2x.png', auto, 18px);
+    width: 18px;
+    height: 18px;
+    margin: 0 10px 0 5px;
+    float: left;
+  }
+
+  .info-message {
+    color: #7e7e7e;
+    max-width: 190px;
+    min-height: 18px;
+    float: left;
+    line-height: 13px;
+    font-size: 12px;
+    text-align: justify;
+  }
+
+}
+/********************************************************************************
+/ GLOBALS
+/********************************************************************************/
+
+.liferay-ims {
+
+  // Add the global font-smoothing to avoid issues
+  // with wrong font rendering in Chrome
+  @include font-smoothing;
+
+  li {
+    line-height: 15px;
+    padding: 0;
+    margin: 0;
+    background: #ffffff;
+    text-align: left;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    opacity: 1 !important;
+  }
+
+  label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+
+  button:hover {
+    opacity: 0.6 !important;
+  }
+
+  a.link {
+    color: #009AE5;
+    font-weight: 200;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+
+}
+
+/********************************************************************************
+/ HELPERS
+/********************************************************************************/
+
+.liferay-ims {
+
+  .hide {
+    display: none !important;
+  }
+
+  .covered {
+    visibility: hidden;
+  }
+
+  .clear {
+    clear: both;
+  }
+
+  .pull-left {
+    float: left;
+  }
+
+  .pull-right {
+    float: right;
+  }
+
+  .overflow-y-scroll {
+    overflow-y: scroll;
+  }
+}/********************************************************************************
+/ PANEL - TRIGGER
+/********************************************************************************/
+
+.liferay-ims .lims-bar div ul li .panel-trigger {
+  cursor: pointer;
+  float: left;
+  border-left: 1px solid #dddad8;
+  color: #4c4c4c;
+  text-decoration: none;
+  padding: 0 6px;
+
+  &:hover {
+    background: #fff;
+  }
+
+  // Trigger name
+  span.trigger-name {
+    max-width: 150px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 15px;
+    // Make the button unselectable
+    @include no-select();
+  }
+
+  // Unread messages badge
+  .unread {
+    background: #bd3131;
+    color: #fff;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 3px;
+    top: 4px;
+    text-align: center;
+    line-height: 14px;
+    font-weight: bold;
+    opacity: 0.8;
+    overflow: hidden;
+    // Rounded corners
+    @include border-radius(5px);
+
+    &.dimmed {
+      background-color: #b3b3b3;
+    }
+  }
+}
+
+// Selected trigger
+.liferay-ims .lims-bar div ul li.selected .panel-trigger {
+  background: #fff;
+  border-top: none;
+  border-bottom: none;
+  line-height: 24px;
+  height: 24px;
+  position: relative;
+  z-index: 30;
+  @include box-shadow(#bcbcbc 1px 1px 1px);
+}
+
+/********************************************************************************
+/ PANEL - WINDOW
+/********************************************************************************/
+
+.liferay-ims .panel-window {
+  background: #fff;
+  border: 1px solid #dddad8;
+  border-bottom: none;
+  border-right: none;
+  font-size: 12px;
+  min-width: 250px;
+  position: relative;
+}
+
+.liferay-ims .ie-support .panel-window {
+  border-right: 2px solid #dddad8;
+  border-bottom: 1px solid #dddad8;
+}
+
+/********************************************************************************
+/ PANEL - BUTTONS
+/********************************************************************************/
+
+.liferay-ims .panel-button {
+  cursor: pointer;
+  width: 20px;
+  height: 14px;
+  float: right;
+  margin: 5px 7px 0 0;
+  opacity: 0.8;
+  outline: none;
+  filter: none;
+  @include box-shadow(none);
+  border: none;
+  padding: 0;
+
+  &:hover,
+  &:focus, {
+    border: none;
+    filter: none;
+    padding: 0;
+    margin: 5px 7px 0 0;
+    @include box-shadow(none);
+    width: 20px;
+    height: 14px;
+  }
+
+  &.minimize {
+    background: url(../../../images/minimize-button.png) left bottom no-repeat;
+    @include image-2x('../../../images/minimize-button@2x.png', auto, 13px);
+  }
+
+  &.close {
+    background: url(../../../images/close-button.png) center center no-repeat;
+    @include image-2x('../../../images/close-button@2x.png', auto, 18px);
+  }
+
+  &.search {
+    background: url(../../../images/search-button.png) center center no-repeat;
+    @include image-2x('../../../images/search-button@2x.png', auto, 13px);
+  }
+
+  &.list {
+    background: url(../../../images/list-button.png) center center no-repeat;
+    @include image-2x('../../../images/list-button@2x.png', auto, 11px);
+  }
+}
+
+/********************************************************************************
+/ PANEL - TITLE
+/********************************************************************************/
+
+.liferay-ims {
+
+  .panel-title {
+    background: #ffffff;
+    color: #222;
+    font-weight: normal;
+    height: 25px;
+    line-height: 24px;
+    text-indent: 7px;
+    text-align: left;
+    font-size: 15px;
+    border-bottom: 1px solid #ccc;
+
+    .panel-title-text {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 190px;
+      text-indent: 5px;
+      cursor: default;
+      @include no-select();
+    }
+  }
+
+  .panel-subtitle {
+    padding: 5px;
+    background: #f8f8f8;
+    color: #222;
+    font-weight: bold;
+    height: 16px;
+  }
+}
+
+/********************************************************************************
+/ PANEL - ERROR
+/********************************************************************************/
+
+.liferay-ims .panel-error {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+  top: 25px;
+  z-index: 2;
+  width: 100%;
+
+  .error-message {
+    margin: 15px 20px;
+    font-weight: 500;
+    line-height: 13px;
+    color: #ffffff;
+  }
+
+  .warning-icon {
+    background: transparent url(../../../images/icon-warning-white.png) no-repeat center center;
+    @include image-2x('../../../images/icon-warning-white@2x.png', auto, 21px);
+    width: 21px;
+    height: 21px;
+    margin: 18px 7px;
+    float: left;
+  }
+}
+
+.liferay-ims .ie-support .panel-error {
+  background: #000;
+}
+
+/********************************************************************************
+/ PANEL - SEARCH INPUT
+/********************************************************************************/
+
+.liferay-ims .panel-search {
+  position: absolute;
+  top: 26px;
+  z-index: 2;
+  background: #ffffff;
+  width: 100%;
+
+  .search-input-field-label {
+    padding: 0;
+    border: none;
+    height: 26px;
+    background: none;
+    margin: 5px 0 5px 7px;
+  }
+
+  .search-input-field {
+    border: 1px solid #d4d4d4;
+    width: 180px;
+    min-height: 21px;
+    max-height: 26px;
+    padding: 2px 27px 2px 27px;
+    color: #1A1A1A;
+    font-size: 12px;
+    background-size: 13px;
+    background: #f1f1f1 url(../../../images/search-button.png) 7px center no-repeat;
+    @include image-2x('../../../images/search-button@2x.png', auto, 13px);
+    // Shadow
+    @include box-shadow(none);
+    // Rounded corners
+    @include border-radius(10px);
+  }
+
+  .search-input-field:hover,
+  .search-input-field:focus {
+    background: #ffffff url(../../../images/search-button.png) 7px center no-repeat;
+    border: 1px solid #d4d4d4;
+    outline: none;
+    background-size: 13px;
+    @include image-2x('../../../images/search-button@2x.png', auto, 13px);
+    // No shadow
+    @include box-shadow(none);
+  }
+
+  .search-content {
+    height: 252px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .preloader {
+    width: 20px;
+    height: 20px;
+    background-image: url(../../../images/preloader-tiny.gif);
+    @include image-2x('../../../images/preloader-tiny@2x.gif', auto, 17px);
+    background-size: 17px;
+    top: 7px;
+    right: 12px;
+    margin: 0;
+  }
+
+  .error-notification,
+  .info-notification {
+    /* Move the notification views a bit up since there is a search input that takes the place */
+    top: 20%;
+  }
+}
+
+/********************************************************************************
+/ CONTACTS PANEL
+/********************************************************************************/
+
+.liferay-ims .buddy-list {
+
+  // Add icon to trigger
+  .panel-trigger .trigger-name {
+    background: url(../../../images/icon-people.png) no-repeat center center;
+    @include image-2x('../../../images/icon-people@2x.png', auto, 16px);
+    width: 40px;
+    height: 24px;
+  }
+
+  // Switch trigger icon when selected
+  &.selected .panel-trigger .trigger-name {
+    background: url(../../../images/icon-people-selected.png) no-repeat center center;
+    @include image-2x('../../../images/icon-people-selected@2x.png', auto, 18px);
+    width: 40px;
+    height: 24px;
+  }
+
+  .group-list .group-item {
+    clear: both;
+    list-style-type: none;
+    line-height: 27px;
+  }
+
+  .group-buddy-list {
+    overflow: hidden;
+  }
+
+  .group-buddy-item {
+    padding: 3px 7px;
+    cursor: pointer;
+    height: 35px;
+    clear: both;
+    line-height: 15px;
+    min-height: 35px;
+  }
+
+  .group-buddy-item:last-of-type {
+    padding-bottom: 7px;
+  }
+
+  .group-buddy-item .group-buddy-item-name {
+    margin-top: 6px;
+    max-width: 145px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 23px;
+  }
+
+  .group-buddy-item-presence {
+    float: right;
+    margin-right: 4px;
+    margin-top: -16px;
+  }
+
+  .group-buddy-item-portrait {
+    height: 36px;
+    width: 36px;
+    margin: 2px 6px 2px 0;
+    float: left;
+  }
+
+  .group-buddy-item-portrait .portrait {
+    display: block;
+    height: 32px;
+    width: 32px;
+    background: #fff;
+    // Circled image
+    @include border-radius(16px);
+  }
+
+  .group-buddy-item-divider {
+    clear: both;
+  }
+
+  .group-buddy-item:hover {
+    background: #f8f8f8;
+  }
+
+  .group-list .group-item .group-name {
+    height: 25px;
+    background: #f8f8f8;
+    margin: -6px 0 0 0;
+    padding-left: 5px;
+    padding-top: 6px;
+    text-transform: uppercase;
+    float: none;
+    @include box-shadow(inset 0 0 0 0 #f8f8f8, inset 0 -2px 2px -2px rgba(105, 104, 104, 0.25));
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 250px;
+  }
+
+  ////////////////////////////////////////////
+  // PANEL CONTENT                          //
+  ////////////////////////////////////////////
+  .panel-content {
+    list-style-type: none;
+    margin: 0;
+    height: 284px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 2px 0;
+  }
+
+}
+/********************************************************************************
+/ CONVERSATION
+/********************************************************************************/
+
+.liferay-ims .conversation {
+
+  .panel-content {
+    height: 250px;
+    overflow-y: auto;
+    background: #fff;
+    margin-top: 0;
+  }
+
+  .panel-content li {
+    line-height: 15px;
+  }
+
+  .ie .panel-content {
+    position: relative;
+  }
+
+  .conversation-item {
+    padding: 5px 7px;
+    min-height: 34px;
+  }
+
+  .conversation-item-portrait img.portrait {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    left: 6px;
+    top: 6px;
+    background: #fff;
+    // Circled image
+    @include border-radius(16px);
+  }
+
+  .conversation-item-message {
+    margin-left: 32px;
+    max-width: 220px;
+  }
+
+  .conversation-item-name {
+    float: left;
+    font-size: 11px;
+    display: block;
+    padding: 3px 5px 3px;
+    color: #7e7e7e;
+    max-width: 120px;
+    line-height: 10px
+  }
+
+  .conversation-item-date {
+    float: right;
+    font-size: 9px;
+    font-style: normal;
+    color: #7e7e7e;
+    max-width: 75px;
+    line-height: 10px;
+    padding-top: 3px;
+  }
+
+  .conversation-item-text {
+    display: block;
+    text-align: left;
+    line-height: 14px;
+    padding: 2px 8px;
+    color: #4c4c4c;
+    font-weight: 400;
+    clear: left;
+    word-wrap: break-word;
+    opacity: 0.6;
+  }
+
+  .panel-input {
+    opacity: 0; /* panel input is hidden until the message feed is loaded */
+    position: relative;
+    height: 34px;
+  }
+
+  .panel-input textarea {
+    width: 249px;
+    height: 22px;
+    padding: 5px 10px 5px;
+    background: #f8f8f8;
+    border: 1px solid #dedede;
+    border-left: none;
+    border-right: none;
+    display: block;
+    overflow: hidden;
+    @include box-shadow(none);
+    resize: none;
+    outline: none;
+    font-size: 12px;
+    line-height: 14px;
+    color: #545454;
+    @include border-radius(0px);
+  }
+
+  .panel-input textarea:focus {
+    background: #fff;
+    border-bottom-color: #fff;
+  }
+
+  span.highlight {
+    background: #a5d6ef;
+    font-weight: normal;
+  }
+
+  .chat-height-monitor {
+    white-space: pre;
+    white-space: pre-wrap;
+    white-space: pre-line;
+    white-space: -o-pre-wrap;
+    white-space: -moz-pre-wrap;
+    word-wrap: break-word;
+    left: -10000em;
+    top: -10000em;
+    padding: 5px 10px 5px;
+    font-size: 12px;
+    line-height: 14px;
+    position: absolute;
+  }
+
+  ////////////////////////////////////////////////////////////
+  // CONVERSATION ITEM ERROR                                //
+  ////////////////////////////////////////////////////////////
+
+  .conversation-item-error {
+    padding: 5px 0 5px;
+
+    .warning-icon {
+      background: transparent url(../../../images/icon-warning-red.png) no-repeat center center;
+      @include image-2x('../../../images/icon-warning-red@2x.png', auto, 16px);
+      width: 14px;
+      height: 16px;
+      margin: 7px 7px 0 0;
+      float: left;
+    }
+
+    .error-message {
+      color: #ce1b1b;
+      max-width: 160px;
+      float: left;
+      line-height: 13px;
+      font-size: 11px;
+      text-align: justify;
+    }
+
+    .resend-button {
+      background: transparent url(../../../images/icon-resend.png) no-repeat center center;
+      @include image-2x('../../../images/icon-resend@2x.png', auto, 21px);
+      width: 21px;
+      height: 21px;
+      float: right;
+      @include box-shadow(none);
+      margin: 0;
+      padding: 0 15px 0 0;
+      border: none;
+
+      &:hover,
+      &:focus, {
+        border: none;
+        filter: none;
+        padding: 0 15px 0 0;
+        margin: 0;
+        @include box-shadow(none);
+        width: 21px;
+        height: 21px;
+      }
+    }
+
+    .resend-button.preloader {
+      position: relative;
+      margin: 0;
+      background: transparent url(../../../images/preloader-button.gif) center center no-repeat;
+      @include image-2x('../../../images/preloader-button@2x.gif', 21px, 21px);
+      background-size: 21px;
+    }
+
+    .delete-button {
+      background: transparent url(../../../images/icon-basket.png) no-repeat center center;
+      @include image-2x('../../../images/icon-basket@2x.png', 16px, 21px);
+      width: 16px;
+      height: 21px;
+      float: right;
+      padding: 0;
+      margin: 0;
+      border: none;
+      @include box-shadow(none);
+
+      &:hover,
+      &:focus, {
+        border: none;
+        filter: none;
+        padding: 0;
+        margin: 0;
+        @include box-shadow(none);
+        width: 16px;
+        height: 21px;
+      }
+    }
+  }
+}/************************************************************************************
+**   PRESENCE PANEL
+*************************************************************************************/
+
+.liferay-ims .status-panel {
+
+  .panel-trigger .trigger-name {
+    width: 20px;
+    height: 24px;
+  }
+
+  .panel-window {
+    min-width: 150px;
+  }
+
+  .status-indicator {
+    margin-left: 6px;
+    margin-top: 7px;
+  }
+
+  ////////////////////////////////
+  // STATUS INDICATOR           //
+  ////////////////////////////////
+
+  .panel-window .status {
+
+    li {
+      padding: 10px 5px 10px 30px;
+      cursor: pointer;
+      line-height: 15px;
+      // Make the button unselectable
+      @include no-select();
+    }
+
+    li:hover {
+      background-color: #f3f3f3;
+    }
+
+    .online {
+      background: url(../../../images/status-online.png) no-repeat 10px center;
+      @include image-2x('../../../images/status-online@2x.png', 10px, 10px);
+    }
+
+    .busy {
+      background: url(../../../images/status-busy.png) no-repeat 10px center;
+      @include image-2x('../../../images/status-busy@2x.png', 10px, 10px);
+    }
+
+    .unavailable {
+      background: url(../../../images/status-unavailable.png) no-repeat 10px center;
+      @include image-2x('../../../images/status-unavailable@2x.png', 10px, 10px);
+    }
+
+    .off {
+      background: url(../../../images/status-off.png) no-repeat 10px center;
+      @include image-2x('../../../images/status-off@2x.png', 10px, 10px);
+    }
+  }
+}/********************************************************************************
+/ SETTINGS PANEL
+/********************************************************************************/
+
+.liferay-ims .chat-settings {
+
+  label {
+    font-size: 12px;
+  }
+
+  label.switch {
+    font-size: 20px;
+  }
+
+  .panel-trigger .trigger-name {
+    background: url(../../../images/icon-settings.png) no-repeat center center;
+    @include image-2x('../../../images/icon-settings@2x.png', 16px, 16px);
+    width: 40px;
+    height: 24px;
+  }
+
+  &.selected .panel-trigger .trigger-name {
+    background: url(../../../images/icon-settings-selected.png) no-repeat center center;
+    @include image-2x('../../../images/icon-settings-selected@2x.png', 16px, 16px);
+    width: 40px;
+    height: 24px;
+  }
+
+  .settings {
+    float: none;
+  }
+
+  .value {
+    float: left;
+    margin: -4px 8px 11px 9px;
+    font-size: 14px;
+    font-weight: bold;
+    min-width: 30px;
+  }
+
+  .settings li {
+    clear: both;
+    float: none;
+    padding: 10px;
+    line-height: 26px;
+  }
+
+  .settings .version {
+    position: absolute;
+    right: 28px;
+    z-index: 2;
+    font-size: 11px;
+    background: #fff;
+    padding: 1px 10px;
+    border: 1px solid #f0f0f0;
+    border-top: 0;
+  }
+
+  .settings.closed .version {
+    visibility: hidden;
+  }
+
+  .settings > input[type="text"] {
+    width: 300px;
+  }
+
+  .title-text {
+    text-transform: capitalize;
+  }
+
+  .buddy-list-ignore-deactivated-user {
+    margin-top: 10px;
+  }
+
+  .settings-title {
+    height: 25px;
+    background: #f8f8f8;
+    padding-left: 5px;
+    padding-top: 6px;
+    text-transform: uppercase;
+    float: none;
+    @include box-shadow(inset 0 0 0 0 #f8f8f8, inset 0 -2px 2px -2px rgba(105, 104, 104, 0.25));
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    .settings-title-text {
+      float: left;
+      max-width: 180px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  /********************************************************************************
+  / SETTINGS PANEL - ADMIN AREA
+  /********************************************************************************/
+
+  .admin-area {
+    position: relative;
+
+    .muc-sponsored {
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+      max-width: 250px;
+
+      .muc-icon {
+        float: left;
+        background: url(../../../images/icon-muc.png) center center no-repeat;
+        @include image-2x('../../../images/icon-muc@2x.png', auto, 45px);
+        width: 45px;
+        height: 45px;
+      }
+
+      .muc-text {
+        max-width: 160px;
+        padding-left: 53px;
+        padding-top: 9px;
+        line-height: 15px;
+        color: rgb(76, 154, 194);
+      }
+
+    }
+
+    .settings {
+      width: 440px;
+      height: 300px;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    .settings.closed {
+      width: 250px;
+      height: 0;
+    }
+
+    .help {
+      display: inline-block;
+      text-decoration: none;
+      background: url(../../../images/button-help.png) center center no-repeat;
+      @include image-2x('../../../images/button-help@2x.png', auto, 20px);
+      width: 20px;
+      height: 20px;
+      float: right;
+      margin-right: 10px;
+    }
+
+    .help:hover {
+      opacity: 0.7;
+    }
+
+    .open-button {
+      float: right;
+      margin-right: 10px;
+      text-decoration: underline;
+      text-transform: capitalize;
+      cursor: pointer;
+    }
+
+    li {
+      padding: 0 10px;
+    }
+
+    .buddy-list-ignore-default-user {
+      padding-top: 14px;
+    }
+
+    .buddy-list-max-buddies {
+      margin-top: 17px;
+    }
+
+    .settings-category-title {
+      margin-top: 10px;
+    }
+
+    .buddy-list-group-excludes {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+/************************************************************************************
+/  STATUS PANEL
+/************************************************************************************/
+
+.liferay-ims .status-panel {
+
+  .panel-window .status {
+    background: #ffffff;
+    display: block;
+    font-size: 12px;
+
+    &.online {
+      background: url(../../../images/status-online.png) center center no-repeat;
+      @include image-2x('../../../images/status-online@2x.png', 10px, 10px);
+      background-size: 10px;
+    }
+
+    &.busy {
+      background: url(../../../images/status-busy.png) center center no-repeat;
+      @include image-2x('../../../images/status-busy@2x.png', 10px, 10px);
+      background-size: 10px;
+    }
+
+    &.unavailable {
+      background: url(../../../images/status-unavailable.png) center center no-repeat;
+      @include image-2x('../../../images/status-unavailable@2x.png', 10px, 10px);
+      background-size: 10px;
+    }
+
+    &.off {
+      background: url(../../../images/status-off.png) center center no-repeat;
+      @include image-2x('../../../images/status-off@2x.png', 10px, 10px);
+      background-size: 10px;
+    }
+  }
+}
+
+/********************************************************************************
+/ PORTLET
+/********************************************************************************/
+
+/* Move container down and on top */
+.liferay-ims {
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  font-family: $font-family;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+
+  textarea, pre, input {
+    font-weight: 400;
+    font-family: $font-family;
+  }
+
+  // Hide unnecessary portlet bars
+  .portlet-borderless-bar {
+    display: none !important;
+  }
+
+  // This hides portlet bars that might appear around the chat bar
+  .portlet {
+    border: none !important;
+    background: none !important;
+    // Hide shadow
+    @include box-shadow(none !important);
+  }
+
+  // Preloaded images should be taken as far from the visible area as possible
+  .preloaded-images {
+    position: absolute;
+    overflow: hidden;
+    left: -9999px;
+    top: -9999px;
+    height: 1px;
+    width: 1px;
+  }
+
+  // Message for unsupported browser
+  .unsupported-browser {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    bottom: 0;
+    position: fixed;
+    right: 5em;
+    padding: 3px 10px;
+    z-index: 999;
+  }
+
+  .unsupported-browser a {
+    color: #444;
+    text-decoration: none;
+  }
+
+  // Hide sound element
+  .lims-sound {
+    position: absolute;
+    top: -10000px;
+    bottom: -10000px;
+  }
+
+}
+
+/********************************************************************************
+/ LIMS BAR (Main container)
+/********************************************************************************/
+
+.liferay-ims .lims-bar {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-left: none;
+  border-bottom: none;
+  bottom: 0;
+  height: 24px;
+  position: fixed;
+  right: 5em;
+  z-index: 999;
+
+  div ul,
+  div ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: left;
+  }
+
+  .panel {
+    bottom: 24px;
+    display: none;
+    position: absolute;
+    right: 0;
+    z-index: 20;
+    // Shadow
+    @include box-shadow(#bcbcbc 1px 1px 1px);
+  }
+
+  .selected .panel {
+    display: block;
+  }
+
+  .lims-tabs > li {
+    float: right;
+    line-height: 24px;
+  }
+
+  div ul li.closed {
+    display: none;
+  }
+
+}
+
+/********************************************************************************
+/ NOTIFICATION - CONFLICT
+/********************************************************************************/
+
+.liferay-ims .conflict-notification {
+  max-width: 300px;
+  padding: 10px;
+  background: rgb(240, 209, 213);
+  border: 1px solid rgb(171, 134, 134);
+  border-bottom: none;
+
+  strong {
+    font-weight: bold;
+  }
+
+}
+
+
+/* YUI CSS Detection Stamp */
+#yui3-css-stamp.lims { display: none; }
+
+/* 
+Added by only Lims Chat portlet working with Tweleve Cap theme
+ */
+.liferay-ims .lims-bar .selected .panel{
+ display: block !important;
+}

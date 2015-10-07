@@ -1,0 +1,3 @@
+run shifter (https://github.com/yui/shifter) to build js/build/lims/lims-min.js
+
+shifter --clean --no-cache --no-lint
